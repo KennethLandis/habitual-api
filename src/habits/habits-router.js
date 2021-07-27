@@ -70,7 +70,7 @@ habitsRouter
     })
     .delete((req, res, next) => {
         const { habit_id } = req.params
-        HabitsService.deleteNote(
+        HabitsService.deleteHabit(
             req.app.get('db'),
             habit_id
         )

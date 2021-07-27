@@ -3,3 +3,5 @@
 {"message":"ClientsService.getAllClients is not a function","level":"error"}
 {"message":"ClientsService.getAllClients is not a function","level":"error"}
 {"message":"ClientsService.getById is not a function","level":"error"}
+{"message":"HabitsService.deleteNote is not a function","level":"error"}
+{"message":"Habit with id 1 deleted.","level":"info"}
