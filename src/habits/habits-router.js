@@ -10,7 +10,7 @@ const serializeHabit = habit => ({
     id: habit.id,
     name: xss(habit.habit_name),
     days_completed: xss(habit.days_completed),
-    client_id: (habit.habit_id)
+    client_id: (habit.client_id)
 })
 
 habitsRouter
