@@ -5,6 +5,8 @@ const cors = require('cors');
 const helmet = require('helmet');
 const { NODE_ENV } = require('./config');
 const errorHandler = require('./error-handler');
+const clientsRouter = require('./clients/clients-router');
+const habitsRouter = require('./habits/habits-router');
 
 const app = express();
 
@@ -14,6 +16,9 @@ app.use(morgan((NODE_ENV === 'production') ? 'tiny' : 'common', {
 
 app.use(helmet());
 app.use(cors());
+
+app.use(clientsRouter)
+app.use(habitsRouter)
 
 app.get('/', (req, res) => {
     res.send('Hello, world!')
