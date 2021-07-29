@@ -8,7 +8,7 @@ const habitsRouter = express.Router();
 
 const serializeHabit = habit => ({
     id: habit.id,
-    name: xss(habit.habit_name),
+    habit_name: xss(habit.habit_name),
     days_completed: (habit.days_completed),
     client_id: (habit.client_id)
 })
@@ -82,13 +82,13 @@ habitsRouter
     })
     .patch(bodyParser, (req, res, next) => {
         const { habit_id } = req.params
-        const { name, days_completed, client_id } = req.body
-        const habitToUpdate = { days_completed, client_id }
+        const { habit_name, days_completed, client_id } = req.body
+        const habitToUpdate = { habit_name, days_completed, client_id }
         const numberOfValues = Object.values(habitToUpdate).filter(Boolean).length
         if (numberOfValues === 0)
           return res.status(400).json({
             error: {
-              message: `Request body must content either 'name', 'days_completed' or 'client_id'`
+              message: `Request body must content either 'habit_name', 'days_completed' or 'client_id'`
             }
           })
     

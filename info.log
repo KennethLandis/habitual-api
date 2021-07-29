@@ -44,3 +44,31 @@
 {"message":"update \"habits\" set \"name\" = $1, \"days_completed\" = $2, \"client_id\" = $3 where \"id\" = $4 - column \"name\" of relation \"habits\" does not exist","level":"error"}
 {"message":"update \"habits\" set \"name\" = $1, \"days_completed\" = $2, \"client_id\" = $3 where \"id\" = $4 - column \"name\" of relation \"habits\" does not exist","level":"error"}
 {"message":"update \"habits\" set \"name\" = $1, \"days_completed\" = $2, \"client_id\" = $3 where \"id\" = $4 - column \"name\" of relation \"habits\" does not exist","level":"error"}
+{"message":"days_completed is required","level":"error"}
+{"message":"days_completed is required","level":"error"}
+{"message":"days_completed is required","level":"error"}
+{"message":"days_completed is required","level":"error"}
+{"message":"days_completed is required","level":"error"}
+{"message":"Habit with id 9 created","level":"info"}
+{"message":"habit_name is required","level":"error"}
+{"message":"habit_name is required","level":"error"}
+{"message":"habit_name is required","level":"error"}
+{"message":"days_completed is required","level":"error"}
+{"message":"days_completed is required","level":"error"}
+{"message":"insert into \"habits\" (\"client_id\", \"days_completed\", \"name\") values ($1, $2, $3) returning * - column \"name\" of relation \"habits\" does not exist","level":"error"}
+{"message":"select * from \"habits\" where \"id\" = $1 limit $2 - invalid input syntax for integer: \"undefined\"","level":"error"}
+{"message":"insert into \"habits\" (\"client_id\", \"days_completed\", \"name\") values ($1, $2, $3) returning * - column \"name\" of relation \"habits\" does not exist","level":"error"}
+{"message":"insert into \"habits\" (\"client_id\", \"days_completed\", \"name\") values ($1, $2, $3) returning * - column \"name\" of relation \"habits\" does not exist","level":"error"}
+{"message":"habit_name is required","level":"error"}
+{"message":"Habit with id 10 created","level":"info"}
+{"message":"Habit with id 11 created","level":"info"}
+{"message":"select * from \"habits\" where \"id\" = $1 limit $2 - invalid input syntax for integer: \"undefined\"","level":"error"}
+{"message":"select * from \"habits\" where \"id\" = $1 limit $2 - invalid input syntax for integer: \"undefined\"","level":"error"}
+{"message":"select * from \"habits\" where \"id\" = $1 limit $2 - invalid input syntax for integer: \"undefined\"","level":"error"}
+{"message":"select * from \"habits\" where \"id\" = $1 limit $2 - invalid input syntax for integer: \"undefined\"","level":"error"}
+{"message":"select * from \"habits\" where \"id\" = $1 limit $2 - invalid input syntax for integer: \"undefined\"","level":"error"}
+{"message":"Habit with id 3 deleted.","level":"info"}
+{"message":"client_name is required","level":"error"}
+{"message":"Client with id 4 created","level":"info"}
+{"message":"Client with id 5 created","level":"info"}
+{"message":"Client with id 6 created","level":"info"}
