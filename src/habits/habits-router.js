@@ -81,8 +81,8 @@ habitsRouter
             .catch(next)
     })
     .patch(bodyParser, (req, res, next) => {
-        const { habit_name, days_completed, client_id } = req.body
-        const habitUpdate = { habit_name, days_completed, client_id }
+        const { id, habit_name, days_completed, client_id } = req.body
+        const habitUpdate = { id, habit_name, days_completed, client_id }
 
         const numberOfValues = Object.values(habitUpdate).filter(Boolean).length
         if (numberOfValues === 0)
