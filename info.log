@@ -5,3 +5,6 @@
 {"message":"ClientsService.getById is not a function","level":"error"}
 {"message":"HabitsService.deleteNote is not a function","level":"error"}
 {"message":"Habit with id 1 deleted.","level":"info"}
+{"message":"Habit with id 1 not found.","level":"error"}
+{"message":"Habit with id 1 not found.","level":"error"}
+{"message":"Habit with id 8 deleted.","level":"info"}

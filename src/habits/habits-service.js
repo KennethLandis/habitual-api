@@ -22,7 +22,11 @@ const HabitsService = {
             .where({ id })
             .delete()
     },
-
+    updateHabit(knex, id) {
+        return knex('habits')
+            .where({ id })
+            .update(habitUpdate)
+    }
 
 }
 
