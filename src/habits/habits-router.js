@@ -81,16 +81,26 @@ habitsRouter
             .catch(next)
     })
     .patch(bodyParser, (req, res, next) => {
-        const { id, habit_name, days_completed, client_id } = req.body
-        const habitUpdate = { id, habit_name, days_completed, client_id }
-
-        const numberOfValues = Object.values(habitUpdate).filter(Boolean).length
+        const { habit_id } = req.params
+        const { name, days_completed, client_id } = req.body
+        const habitToUpdate = { days_completed, client_id }
+        const numberOfValues = Object.values(habitToUpdate).filter(Boolean).length
         if (numberOfValues === 0)
-            return res.status(400).json({
-                error: {
-                    message: `Request body must content either 'habit_name', 'days_completed', or 'client_id'`
-                }
-            })
-    })
+          return res.status(400).json({
+            error: {
+              message: `Request body must content either 'name', 'days_completed' or 'client_id'`
+            }
+          })
+    
+        HabitsService.updateHabit(
+          req.app.get('db'),
+          habit_id,
+          habitToUpdate
+        )
+          .then(numRowsAffected => {
+            res.status(204).end()
+          })
+          .catch(next)
+      })
 
 module.exports = habitsRouter

@@ -9,3 +9,38 @@
 {"message":"Habit with id 1 not found.","level":"error"}
 {"message":"Habit with id 8 deleted.","level":"info"}
 {"message":"Habit with id 1 not found.","level":"error"}
+{"message":"Habit with id 1 not found.","level":"error"}
+{"message":"Habit with id 1 not found.","level":"error"}
+{"message":"habitUpdate is not defined","level":"error"}
+{"message":"habitUpdate is not defined","level":"error"}
+{"message":"habitUpdate is not defined","level":"error"}
+{"message":"habitUpdate is not defined","level":"error"}
+{"message":"Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update \"habits\" set \"days_completed\" = ? where \"id\" = ?","level":"error"}
+{"message":"Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update \"habits\" set \"days_completed\" = ? where \"id\" = ?","level":"error"}
+{"message":"Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update \"habits\" set \"days_completed\" = ? where \"id\" = ?","level":"error"}
+{"message":"Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update \"habits\" set \"days_completed\" = ? where \"id\" = ?","level":"error"}
+{"message":"Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update \"habits\" set \"days_completed\" = ? where \"id\" = ?","level":"error"}
+{"message":"Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update \"habits\" set \"days_completed\" = ? where \"id\" = ?","level":"error"}
+{"message":"Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update \"habits\" set \"days_completed\" = ? where \"id\" = ?","level":"error"}
+{"message":"Habit with id 1 not found.","level":"error"}
+{"message":"Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update \"habits\" set \"name\" = ?, \"days_completed\" = ?, \"client_id\" = ? where \"id\" = ?","level":"error"}
+{"message":"Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update \"habits\" set \"name\" = ?, \"days_completed\" = ?, \"client_id\" = ? where \"id\" = ?","level":"error"}
+{"message":"Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update \"habits\" set \"name\" = ?, \"days_completed\" = ?, \"client_id\" = ? where \"id\" = ?","level":"error"}
+{"message":"Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update \"habits\" set \"name\" = ?, \"days_completed\" = ?, \"client_id\" = ? where \"id\" = ?","level":"error"}
+{"message":"Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update \"habits\" set \"name\" = ?, \"days_completed\" = ?, \"client_id\" = ? where \"id\" = ?","level":"error"}
+{"message":"Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update \"habits\" set \"name\" = ?, \"days_completed\" = ?, \"client_id\" = ? where \"id\" = ?","level":"error"}
+{"message":"Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update \"habits\" set \"name\" = ?, \"days_completed\" = ?, \"client_id\" = ? where \"id\" = ?","level":"error"}
+{"message":"Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update \"habits\" set \"name\" = ?, \"days_completed\" = ?, \"client_id\" = ? where \"id\" = ?","level":"error"}
+{"message":"Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update \"habits\" set \"name\" = ?, \"days_completed\" = ?, \"client_id\" = ? where \"id\" = ?","level":"error"}
+{"message":"Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update \"habits\" set \"name\" = ?, \"days_completed\" = ?, \"client_id\" = ? where \"id\" = ?","level":"error"}
+{"message":"Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update \"habits\" set \"name\" = ?, \"days_completed\" = ?, \"client_id\" = ? where \"id\" = ?","level":"error"}
+{"message":"Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update \"habits\" set \"name\" = ?, \"days_completed\" = ?, \"client_id\" = ? where \"id\" = ?","level":"error"}
+{"message":"Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update \"habits\" set \"name\" = ?, \"days_completed\" = ?, \"client_id\" = ? where \"id\" = ?","level":"error"}
+{"message":"Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update \"habits\" set \"name\" = ?, \"days_completed\" = ?, \"client_id\" = ? where \"id\" = ?","level":"error"}
+{"message":"Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update \"habits\" set \"name\" = ?, \"days_completed\" = ?, \"client_id\" = ? where \"id\" = ?","level":"error"}
+{"message":"Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update \"habits\" set \"name\" = ?, \"days_completed\" = ?, \"client_id\" = ? where \"id\" = ?","level":"error"}
+{"message":"Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update \"habits\" set \"name\" = ?, \"days_completed\" = ?, \"client_id\" = ? where \"id\" = ?","level":"error"}
+{"message":"update \"habits\" set \"name\" = $1, \"days_completed\" = $2, \"client_id\" = $3 where \"id\" = $4 - column \"name\" of relation \"habits\" does not exist","level":"error"}
+{"message":"update \"habits\" set \"name\" = $1, \"days_completed\" = $2, \"client_id\" = $3 where \"id\" = $4 - column \"name\" of relation \"habits\" does not exist","level":"error"}
+{"message":"update \"habits\" set \"name\" = $1, \"days_completed\" = $2, \"client_id\" = $3 where \"id\" = $4 - column \"name\" of relation \"habits\" does not exist","level":"error"}
+{"message":"update \"habits\" set \"name\" = $1, \"days_completed\" = $2, \"client_id\" = $3 where \"id\" = $4 - column \"name\" of relation \"habits\" does not exist","level":"error"}
