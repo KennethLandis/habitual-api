@@ -1,3 +1,5 @@
+Habitually Successful API
+
 Created Habit tracking app with custom server
 
 Summary: Custom API hosted on Heroku to connect to Habitually Successful app frontend.  Created endpoints to store users and passwords as well as track habits that are added or deleted and days completed for each habit to help users develop good habits for a better lifstyle.  
