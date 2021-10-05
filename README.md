@@ -1,26 +1,39 @@
-# Express Boilerplate!
+Habitually Successful API
 
-This is a boilerplate project used for starting new projects!
+Created Habit tracking app with custom server
 
-## Set up
+Summary: Custom API hosted on Heroku to connect to Habitually Successful app frontend.  Created endpoints to store users and passwords as well as track habits that are added or deleted and days completed for each habit to help users develop good habits for a better lifstyle.  
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
+Screenshot: ![image](https://user-images.githubusercontent.com/67128061/129077645-9c0410d0-999a-4172-a5e7-788d83ae331d.png)
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
+Live link: https://habitual-app-9a0jvj6na-kennethlandis.vercel.app/
 
-## Scripts
+Server Link: https://immense-fortress-04687.herokuapp.com
 
-Start the application `npm start`
+Technology: This app was built using React Html Css Javascript jQuery Express Node.js PSQL
 
-Start nodemon for the application `npm run dev`
+App github: https://github.com/KennethLandis/habitual-app
 
-Run the tests `npm test`
+Documentation
 
-## Deploying
+Routes and Endpoints
 
-When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's main branch.
+The habitual-api was written with a clients and a habits router built in with endpoints up date the two tables.
+The "base url" + /clients route will allow you to GET a list of users or target a single by ID as well as POST a new user.
+Each client posted will need to be serialized to prevent malicious scripting.
+
+GET all users
+
+"base url/clients"
+
+GET user by ID
+
+"base url/clients/{ID param}"
+
+POST user
+
+"base url/clients" including a req body with a client_name="" and user_password="".
+
+We also include a route for manipulating the habits for each user to personalize their experience with the app.
+
+These include a GET | POST | PUT | DELETE option targeting the habit by client id in the relational database. Each habit needs to be serialized to protect against malicious scripting.
