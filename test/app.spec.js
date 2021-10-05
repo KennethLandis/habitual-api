@@ -1,136 +1,15 @@
-const app = require('../src/app')
 const knex = require('knex')
-const { contentSecurityPolicy } = require('helmet')
+const app = require('../src/app')
+const { makeUsersArray } = require('./users.fixtures')
+const { makeHabitsArray } = require('./habits.fixtures') 
 const supertest = require('supertest')
+const { default: contentSecurityPolicy } = require('helmet/dist/middlewares/content-security-policy')
 const { expect } = require('chai')
-const helpers = require('./test-helpers')
 
 describe('Endpoints', function() {
     let db
-    const testUsers = [
-        {
-            "client_name": "portal",
-            "user_password": "test1"
-        },
-        {
-            "client_name": "petch",
-            "user_password": "test2",
-        },
-        {
-            "client_name": "byrd",
-            "user_password": "test3"
-        } 
-        ]
-    const testHabits = [
-        {
-            habit_name: 'Do the dishes',
-            days_completed: 3,
-            client_id: 2
-        },
-        {
-            habit_name: 'Complete a Mythic',
-            days_completed: 0,
-            client_id: 1
-        },
-        {
-            habit_name: 'Maple Tour',
-            days_completed: 54,
-            client_id: 3
-        },
-        {
-            habit_name: 'Commerci',
-            days_completed: 2,
-            client_id: 3
-        },
-        {
-            habit_name: 'Check my email',
-            days_completed: 1,
-            client_id: 2
-        },
-        {
-            habit_name: 'Work on my css',
-            days_completed: 3,
-            client_id: 2
-        },
-        {
-            habit_name: 'Complete datastructures practice',
-            days_completed: 2,
-            client_id: 2
-        },
-        {
-            habit_name: 'Farm for a new mount',
-            days_completed: 1,
-            client_id: 2
-        }
-        ]
-    const expectedUsers = [
-        {
-            "id": 1,
-            "client_name": "portal",
-            "user_password": "test1"
-        },
-        {
-            "id": 2,
-            "client_name": "petch",
-            "user_password": "test2",
-        },
-        {
-            "id": 3,
-            "client_name": "byrd",
-            "user_password": "test3"
-        }
-    ]
-    const expectedHabits = [
-        {
-            id: 1,
-            habit_name: 'Do the dishes',
-            days_completed: 3,
-            client_id: 2
-        },
-        {
-            id: 2,
-            habit_name: 'Complete a Mythic',
-            days_completed: 0,
-            client_id: 1
-        },
-        {
-            id: 3,
-            habit_name: 'Maple Tour',
-            days_completed: 54,
-            client_id: 3
-        },
-        {
-            id: 4,
-            habit_name: 'Commerci',
-            days_completed: 2,
-            client_id: 3
-        },
-        {
-            id: 5,
-            habit_name: 'Check my email',
-            days_completed: 1,
-            client_id: 2
-        },
-        {
-            id: 6,
-            habit_name: 'Work on my css',
-            days_completed: 3,
-            client_id: 2
-        },
-        {
-            id: 7,
-            habit_name: 'Complete datastructures practice',
-            days_completed: 2,
-            client_id: 2
-        },
-        {
-            id: 8,
-            habit_name: 'Farm for a new mount',
-            days_completed: 1,
-            client_id: 2
-        }
-    ]
-    before(() => {
+
+    before('make knex instance', () => {
         db = knex({
             client: 'pg',
             connection: process.env.TEST_DB_URL,
@@ -138,99 +17,239 @@ describe('Endpoints', function() {
         app.set('db', db)
     })
 
-    after(() => db.destroy())
+    after('disconnect from db', () => db.destroy())
 
-    before('cleanup', () => helpers.cleanTables(db))
+    before('clean the table', () => db.raw('TRUNCATE clients, habits RESTART IDENTITY CASCADE'))
 
-    afterEach('cleanup', () => helpers.cleanTables(db))
+    afterEach('cleanup', () => db.raw('TRUNCATE clients, habits RESTART IDENTITY CASCADE'))
 
-    describe(`GET /clients and /habits`, () => {
-        context(`Gets clients from Database`, () => {
-            beforeEach(() => {
-                helpers.seedTables(db, testUsers, testHabits)})
-
-
-            it('responds with 200 and all of the users', () => {
-                    return supertest(app)
-                        .get('/clients')
-                        .expect(200, expectedUsers)
+    describe('GET /clients', () => {
+        context('Given no clients', () => {
+            it(`responds with 200 and an empty list`, () => {
+                return supertest(app)
+                    .get('/clients')
+                    .expect(200, [])
             })
         })
 
+        context(`Given there are users in the database`, () => {
+            const testUsers = makeUsersArray();
+            const testHabits = makeHabitsArray();
 
-            it('responds with 200 and all of the habits', () => {
-                return supertest(app)
-                    .get('/habits')
-                    .expect(200, expectedHabits)
+            beforeEach('insert data', () => {
+                return db
+                    .into('clients')
+                    .insert(testUsers)
+                    .then(() => {
+                        return db
+                            .into('habits')
+                            .insert(testHabits)
+                    })
             })
 
-            it('responds with 200 and targeted client', () => {
-                const clientId = 2
+            it('responds with 200 and all of the users', () => {
                 return supertest(app)
-                    .get(`/clients/${clientId}`)
-                    .expect(200, expectedUsers[(clientId - 1)])
+                    .get('/clients')
+                    .expect(200, testUsers)
+            })
+        })        
+    })
+    describe(`GET /clients:client_id`, () => {
+        context('Given no clients', () => {
+            it(`responds with 404`, () => {
+                const userId = 6
+                return supertest(app)
+                    .get(`/clients/${userId}`)
+                    .expect(404, { error: { message: `Client Not Found` } })
+            })
+        })
+
+        context(`Given there are users in the database`, () => {
+            const testUsers = makeUsersArray();
+            const testHabits = makeHabitsArray();
+
+            beforeEach('insert data', () => {
+                return db
+                    .into('clients')
+                    .insert(testUsers)
+                    .then(() => {
+                        return db
+                            .into('habits')
+                            .insert(testHabits)
+                    })
             })
 
-            it(`responds with 200 and target habit`, () => {
-                const habitId = 3
+            it(`responds with 200 and the specified user`, () => {
+                const userId = 2
+                const expectedUser = testUsers[userId - 1]
                 return supertest(app)
-                    .get(`/habits/${habitId}`)
-                    .expect(200, expectedHabits[(habitId - 1)])
+                    .get(`/clients/${userId}`)
+                    .expect(200, expectedUser)
             })
+        })
+    })
 
-            it(`creates a new user, responding with 201 and the new comment`, () => {
-            const testUser = {
-                client_name: 'testing',
-                user_password: 'test1'
+    describe(`Post /clients`, () => {
+        it(`creates an user, responding with 201 and the new user`, () => {
+            const newUser = {
+                client_name: 'cale',
+                user_password: 'dragonglory'
             }
             return supertest(app)
                 .post('/clients')
-                .send(testUser)
+                .send(newUser)
                 .expect(201)
                 .expect(res => {
-                    expect(res.body).to.have.property('client_name')
-                    expect(res.body.client_name).to.eql(testUser.client_name)
-                    expect(res.body.user_password).to.eql(testUser.user_password)
+                    expect(res.body.client_name).to.eql(newUser.client_name)
+                    expect(res.body.user_password).to.eql(newUser.user_password)
+                    expect(res.body).to.have.property('id')
                 })
-                .expect(res =>
-                    db
-                        .from('clients')
-                        .select('*')
-                        .where({ client_name: res.body.client_name})
-                        .first()
-                        .then(row => {
-                            expect(row.client_name).to.eql(testUser.client_name)
-                            expect(row.user_password).to.eql(testUser.password)
-                        })
-                    )
-                })
+                .then(res =>
+                    supertest(app)
+                    .get(`/clients/${res.body.id}`)
+                    .expect(res.body))
+        })
+    })
+
+    describe('GET /habits', () => {
+        context('Given no habits', () => {
+            it(`responds with 200 and an empty list`, () => {
+                return supertest(app)
+                    .get('/habits')
+                    .expect(200, [])
+            })
         })
 
-            it(`creates a new habit, responding with 201 and the new comment`, () => {
-            const testHabit = {
-                habit_name: 'test habit',
-                days_completed: 1,
+        context(`Given there are habits in the database`, () => {
+            const testUsers = makeUsersArray();
+            const testHabits = makeHabitsArray();
+
+            beforeEach('insert data', () => {
+                return db
+                    .into('clients')
+                    .insert(testUsers)
+                    .then(() => {
+                        return db
+                            .into('habits')
+                            .insert(testHabits)
+                    })
+            })
+
+            it('responds with 200 and all of the users', () => {
+                return supertest(app)
+                    .get('/habits')
+                    .expect(200, testHabits)
+            })
+        })        
+    })
+
+    describe(`GET /habits:habitsId`, () => {
+        context('Given no habits', () => {
+            it(`responds with 404`, () => {
+                const habitId = 6
+                return supertest(app)
+                    .get(`/habits/${habitId}`)
+                    .expect(404, { error: { message: `Habit Not Found` } })
+            })
+        })
+
+        context(`Given there are habits in the database`, () => {
+            const testUsers = makeUsersArray();
+            const testHabits = makeHabitsArray();
+
+            beforeEach('insert data', () => {
+                return db
+                    .into('clients')
+                    .insert(testUsers)
+                    .then(() => {
+                        return db
+                            .into('habits')
+                            .insert(testHabits)
+                    })
+            })
+
+            it(`responds with 200 and the specified habit`, () => {
+                const habitId = 2
+                const expectedHabit = testHabits[habitId - 1]
+                return supertest(app)
+                    .get(`/habits/${habitId}`)
+                    .expect(200, expectedHabit)
+            })
+        })
+    })
+    describe(`Post /habits`, () => {
+        const testUsers = makeUsersArray();
+        beforeEach('insert data', () => {
+            return db
+                .into('clients')
+                .insert(testUsers)
+        })
+        it(`creates a habit, responding with 201 and the new habit`, () => {
+            const newHabit = {
+                id: 1,
+                habit_name: 'pick dragonglory',
+                days_completed: 6,
                 client_id: 1
             }
             return supertest(app)
                 .post('/habits')
-                .send(testHabit)
+                .send(newHabit)
                 .expect(201)
                 .expect(res => {
-                    expect(res.body).to.have.property('habit_name')
-                    expect(res.body.habit_name).to.eql(testHabit.habit_name)
-                    expect(res.body.days_completed).to.eql(testHabit.days_completed)
+                    expect(res.body.habit_name).to.eql(newHabit.habit_name)
+                    expect(res.body.days_completed).to.eql(newHabit.days_completed)
+                    expect(res.body).to.have.property('id')
                 })
-                .expect(res =>
-                    db
-                        .from('habits')
-                        .select('*')
-                        .where({ habit_name: res.body.habit_name})
-                        .first()
-                        .then(row => {
-                            expect(row.habit_name).to.eql(testHabit.habit_name)
-                            expect(row.days_completed).to.eql(testHabit.days_completed)
-                        })
-                    )
-                })
+                .then(res =>
+                    supertest(app)
+                    .get(`/habits/${res.body.id}`)
+                    .expect(res.body))
+        })
+    })
+    describe(`PATCH /habits/:habit_id`, () => {
+        context(`Given not habits`, () => {
+            it(`responds with 404`, () => {
+                const habitId = 2
+                return supertest(app)
+                    .delete(`/habits/${habitId}`)
+                    .expect(404, { error: { message: `Habit Not Found`}})
+            })
+        })
+        context(`Given there are habits in the database`, () => {
+            const testUsers = makeUsersArray();
+            const testHabits = makeHabitsArray();
+
+            beforeEach('insert data', () => {
+                return db
+                    .into('clients')
+                    .insert(testUsers)
+                    .then(() => {
+                        return db
+                            .into('habits')
+                            .insert(testHabits)
+                    })
+            })
+
+            it(`responds with 204 and updates the habit`, () => {
+                const idToUpdate = 2
+                const updateHabit = {
+                    habit_name: 'updated habit name',
+                    days_completed: 42,
+                    client_id: 1
+                }
+                const expectedHabit = {
+                    ...testHabits[idToUpdate - 1],
+                    ...updateHabit
+                }
+                return supertest(app)
+                    .patch(`/habits/${idToUpdate}`)
+                    .send(updateHabit)
+                    .expect(204)
+                    .then(res =>
+                        supertest(app)
+                        .get(`/habits/${idToUpdate}`)
+                        .expect(expectedHabit))
+            })
+        })
+    })
 })

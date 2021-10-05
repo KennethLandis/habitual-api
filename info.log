@@ -189,3 +189,101 @@
 {"message":"Client with id 2 not found.","level":"error"}
 {"message":"Habit with id 3 not found.","level":"error"}
 {"message":"Client with id 1 created","level":"info"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"insert into \"clients\" (\"client_name\", \"user_password\") values ($1, $2) returning * - duplicate key value violates unique constraint \"clients_pkey\"","level":"error"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"insert into \"clients\" (\"client_name\", \"user_password\") values ($1, $2) returning * - duplicate key value violates unique constraint \"clients_pkey\"","level":"error"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"insert into \"clients\" (\"client_name\", \"user_password\") values ($1, $2) returning * - duplicate key value violates unique constraint \"clients_pkey\"","level":"error"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"insert into \"clients\" (\"client_name\", \"user_password\") values ($1, $2) returning * - duplicate key value violates unique constraint \"clients_pkey\"","level":"error"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"insert into \"clients\" (\"client_name\", \"user_password\") values ($1, $2) returning * - duplicate key value violates unique constraint \"clients_pkey\"","level":"error"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"insert into \"clients\" (\"client_name\", \"user_password\") values ($1, $2) returning * - duplicate key value violates unique constraint \"clients_pkey\"","level":"error"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"insert into \"clients\" (\"client_name\", \"user_password\") values ($1, $2) returning * - duplicate key value violates unique constraint \"clients_pkey\"","level":"error"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"insert into \"clients\" (\"client_name\", \"user_password\") values ($1, $2) returning * - duplicate key value violates unique constraint \"clients_pkey\"","level":"error"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"insert into \"clients\" (\"client_name\", \"user_password\") values ($1, $2) returning * - duplicate key value violates unique constraint \"clients_pkey\"","level":"error"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"insert into \"clients\" (\"client_name\", \"user_password\") values ($1, $2) returning * - duplicate key value violates unique constraint \"clients_pkey\"","level":"error"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"insert into \"clients\" (\"client_name\", \"user_password\") values ($1, $2) returning * - duplicate key value violates unique constraint \"clients_pkey\"","level":"error"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"Client with id 1 created","level":"info"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"Client with id 1 created","level":"info"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"Client with id 1 created","level":"info"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"Client with id 1 created","level":"info"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"Client with id 1 created","level":"info"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"Client with id 1 created","level":"info"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"Client with id 1 created","level":"info"}
+{"message":"Habit with id 6 not found.","level":"error"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"Client with id 1 created","level":"info"}
+{"message":"Habit with id 6 not found.","level":"error"}
+{"message":"insert into \"habits\" (\"client_id\", \"days_completed\", \"habit_name\") values ($1, $2, $3) returning * - insert or update on table \"habits\" violates foreign key constraint \"habits_client_id_fkey\"","level":"error"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"Client with id 1 created","level":"info"}
+{"message":"Habit with id 6 not found.","level":"error"}
+{"message":"insert into \"habits\" (\"client_id\", \"days_completed\", \"habit_name\") values ($1, $2, $3) returning * - insert or update on table \"habits\" violates foreign key constraint \"habits_client_id_fkey\"","level":"error"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"Client with id 1 created","level":"info"}
+{"message":"Habit with id 6 not found.","level":"error"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"Client with id 1 created","level":"info"}
+{"message":"Habit with id 6 not found.","level":"error"}
+{"message":"Habit with id 1 created","level":"info"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"Client with id 1 created","level":"info"}
+{"message":"Habit with id 6 not found.","level":"error"}
+{"message":"Habit with id 1 created","level":"info"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"Client with id 1 created","level":"info"}
+{"message":"Habit with id 6 not found.","level":"error"}
+{"message":"Habit with id 1 created","level":"info"}
+{"message":"Habit with id 2 not found.","level":"error"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"Client with id 1 created","level":"info"}
+{"message":"Habit with id 6 not found.","level":"error"}
+{"message":"Habit with id 1 created","level":"info"}
+{"message":"Habit with id 2 not found.","level":"error"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"Client with id 1 created","level":"info"}
+{"message":"Habit with id 6 not found.","level":"error"}
+{"message":"Habit with id 1 created","level":"info"}
+{"message":"Habit with id 2 not found.","level":"error"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"Client with id 1 created","level":"info"}
+{"message":"Habit with id 6 not found.","level":"error"}
+{"message":"Habit with id 1 created","level":"info"}
+{"message":"Habit with id 2 not found.","level":"error"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"Client with id 1 created","level":"info"}
+{"message":"Habit with id 6 not found.","level":"error"}
+{"message":"Habit with id 1 created","level":"info"}
+{"message":"Habit with id 2 not found.","level":"error"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"Client with id 1 created","level":"info"}
+{"message":"Habit with id 6 not found.","level":"error"}
+{"message":"Habit with id 1 created","level":"info"}
+{"message":"Habit with id 2 not found.","level":"error"}
+{"message":"Client with id 6 not found.","level":"error"}
+{"message":"Client with id 1 created","level":"info"}
+{"message":"Habit with id 6 not found.","level":"error"}
+{"message":"Habit with id 1 created","level":"info"}
+{"message":"Habit with id 2 not found.","level":"error"}
